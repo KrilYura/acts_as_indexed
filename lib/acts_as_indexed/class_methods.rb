@@ -174,10 +174,10 @@ module ActsAsIndexed
     def sort(ranked_records)
       ranked_records.sort { |a, b|
         a_score = a.last
-        a_id = a.first.is_a?(Fixnum) || a.first.is_a?(Bignum) ? a.first : a.first.id
+        a_id = a.first.is_a?(Fixnum) || a.first.is_a?(Bignum) || a.first.is_a?(String) ? a.first : a.first.id
 
         b_score = b.last
-        b_id = b.first.is_a?(Fixnum) || b.first.is_a?(Bignum) ? b.first : b.first.id
+        b_id = b.first.is_a?(Fixnum) || b.first.is_a?(Bignum) || a.first.is_a?(String) ? b.first : b.first.id
 
         if a_score == b_score
           a_id <=> b_id
